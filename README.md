@@ -31,13 +31,16 @@ This repository was prepared with the information in the following links:
 4. Execute the following commands:
 
    -To know the ip of the machine: `docker-machine ip`
+
    -To execute the docker-compose file: `docker-compose up -d`
 
-5. To know the ip of the machine: `docker-machine ip`
+5. At this point, the containers should be running, check them with: `docker ps -a`  :whale:
 
-6. Search for that ip in your browser (Slim Project running)
+6. To know the ip of the machine: `docker-machine ip`
 
-7. Search for the ip:8080 for phpMyadmin (credentials in **docker-compose.yml**)
+7. Search for that ip in your browser (At this point the Slim Project should be running :sunglasses:)
+
+8. Search for the ip:8080 for phpMyadmin (credentials in **docker-compose.yml**)
 
 ## Docker usefull commands:
 If you are using Ubuntu 16.04, you need to add `sudo` at the begining of all the **docker** commands:
