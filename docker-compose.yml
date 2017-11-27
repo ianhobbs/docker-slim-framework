@@ -1,0 +1,57 @@
+nginx:
+  build: ./config_nginx
+  ports:
+    # Ports: <HOST:CONTAINER>
+    - 80:80
+  links:
+    - php
+  volumes_from:
+    - app
+  volumes:
+    - ./config_nginx/logs/nginx-error.log:/var/log/nginx/error.log
+
+php:
+  build: ./config_php
+  expose:
+    - 9000
+  links:
+    - mysql 
+  volumes_from:
+    - app
+
+app:
+  # image: php:7.0-fpm
+  image: php:7.1-fpm-alpine
+  volumes:
+    - ./myappname:/var/www/html/app
+  command: "true"
+
+mysql:
+  image: mysql:5.7.20
+  # image: mysql:latest
+  volumes_from:
+    - data
+  environment:
+    # user= root / password= secret
+    MYSQL_ROOT_PASSWORD: secret
+    MYSQL_DATABASE: project
+    # user= project / password = project
+    MYSQL_USER: project
+    MYSQL_PASSWORD: project
+
+data:
+  image: mysql:5.7.20
+  # image: mysql:latest
+  volumes:
+    - /var/lib/mysql 
+  command: "true"
+
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin:4.7
+  # image: phpmyadmin/phpmyadmin
+  ports: 
+    - 8080:80
+  links:
+    - mysql 
+  environment:
+    PMA_HOST: mysql 
