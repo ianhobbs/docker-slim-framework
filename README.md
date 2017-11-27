@@ -28,7 +28,7 @@ This repository was prepared with the information in the following links:
 
 3. Go inside **myappname** and execute (to download vendor directory): `composer install`
 
-4. Execute the following commands:
+4. Execute the following commands (Get out of **myappname** / Need to be at the level of **docker-compose.yml**):
 
    -To know the ip of the machine: `docker-machine ip`
 
