@@ -29,6 +29,7 @@ This repository was prepared with the information in the following links:
 3. Go inside **myappname** and execute (to download vendor directory): `composer install`
 
 4. Execute the following commands:
+
    -To know the ip of the machine: `docker-machine ip`
    -To execute the docker-compose file: `docker-compose up -d`
 
@@ -49,16 +50,21 @@ If you are using Ubuntu 16.04, you need to add `sudo` at the begining of all the
 - To go inside the container: `docker exec -it <name-of-the-container> bash`
 
 ## To use latest versions of containers:
-For example, you only need to modify te following, inside docker-compose.yml: 
+For example, you only need to modify te following, inside **docker-compose.yml**: 
+
 Use **image: mysql:latest** instead of **image: mysql:5.7.20**, or specify the version you need (Review Docker Hub for Tags)
 
 ## To update Slim-Skeleton:
 This Container comes with Slim-Framework "ready to use".
 
 1. The "myappname" directory was created as follows:
-Akrabat: https://github.com/akrabat/slim3-skeleton
-`composer create-project --no-interaction --stability=dev akrabat/slim3-skeleton myappname`
+
+   Akrabat: https://github.com/akrabat/slim3-skeleton
+   
+   RUN: `composer create-project --no-interaction --stability=dev akrabat/slim3-skeleton myappname`
 
 2. Also, you can use:	
-Oficial: https://github.com/slimphp/Slim-Skeleton
-`composer create-project slim/slim-skeleton myappname`
+
+   Oficial: https://github.com/slimphp/Slim-Skeleton
+   
+   RUN: `composer create-project slim/slim-skeleton myappname`
