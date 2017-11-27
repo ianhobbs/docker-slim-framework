@@ -34,7 +34,7 @@ This repository was prepared with the information in the following links:
 
    -To execute the docker-compose file: `docker-compose up -d`
 
-5. At this point, the containers should be running, check them with: `docker ps -a`  :whale:
+5. At this point, the containers should be running, check them with: `docker ps -a` 
 
 6. To know the ip of the machine: `docker-machine ip`
 
