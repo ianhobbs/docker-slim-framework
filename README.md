@@ -36,11 +36,11 @@ This repository was prepared with the information in the following links:
 
 5. At this point, the containers should be running, check them with: `docker ps -a` 
 
-6. To know the ip of the machine: `docker-machine ip`
+6. To know the ip of the machine (For Windows): `docker-machine ip`
 
-7. Search for that ip in your browser (At this point the Slim Project should be running :sunglasses:)
+7. Search for that ip:8085 in your browser (At this point the Slim Project should be running :sunglasses:)
 
-8. Search for the ip:8080 for phpMyadmin (credentials in **docker-compose.yml**)
+8. Search for the ip:8090 for phpMyadmin (credentials in **docker-compose.yml**)
 
 ## Docker usefull commands:
 If you are using Ubuntu 16.04, you need to add `sudo` at the begining of all the **docker** commands:
