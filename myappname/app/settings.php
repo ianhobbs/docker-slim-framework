@@ -3,7 +3,7 @@ return [
     'settings' => [
         // Slim Settings
         'determineRouteBeforeAppMiddleware' => false,
-        'displayErrorDetails' => false,
+        'displayErrorDetails' => true,
 
         // View settings
         'view' => [
@@ -18,7 +18,7 @@ return [
         // monolog settings
         'logger' => [
             'name' => 'app',
-            'path' => __DIR__ . '/../log/app.log',
+            'path' => __DIR__ . '/log/app.log',
         ],
     ],
 ];

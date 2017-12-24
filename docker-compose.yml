@@ -1,56 +1,55 @@
-nginx:
-  build: ./config_nginx
-  ports:
-    # Ports: <HOST:CONTAINER>
-    # Take care not to be using the following ports for any other service
-    - 8085:80
-  links:
-    - php
-  volumes_from:
-    - app
+version: '2'
+services:
+    nginx:
+        build: ./config_nginx
+        restart: always
+        ports:
+            # Ports: <HOST:CONTAINER>
+            # Take care not to be using the following ports for any other service
+            - 8085:80
+        volumes: 
+            #- ./default.conf:/etc/nginx/conf.d/default.conf
+            - ./myappname:/var/www/html/app
+        networks:
+          - appnet
 
-php:
-  build: ./config_php
-  expose:
-    - 9000
-  links:
-    - mysql 
-  volumes_from:
-    - app
+    php:
+        build: ./config_php
+        restart: always
+        expose:
+            - 9000
 
-app:
-  # image: php:7.0-fpm
-  image: php:7.1-fpm-alpine
-  volumes:
-    - ./myappname:/var/www/html/app
-  command: "true"
+        volumes: 
+          - ./myappname:/var/www/html/app
+        networks:
+          - appnet          
 
-mysql:
-  image: mysql:5.7.20
-  # image: mysql:latest
-  volumes_from:
-    - data
-  environment:
-    # user= root / password= secret
-    MYSQL_ROOT_PASSWORD: secret
-    MYSQL_DATABASE: project
-    # user= project / password = project
-    MYSQL_USER: project
-    MYSQL_PASSWORD: project
+    mysql:
+        image: mysql:5.7.20
+        restart: always
+        environment:
+            # user= root / password= secret
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_DATABASE: project
+            # user= project / password = project
+            MYSQL_USER: project
+            MYSQL_PASSWORD: project
+        networks:
+          - appnet            
 
-data:
-  image: mysql:5.7.20
-  # image: mysql:latest
-  volumes:
-    - /var/lib/mysql 
-  command: "true"
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:4.7
+        # image: phpmyadmin/phpmyadmin
+        ports: 
+          - 8090:80
+        links:
+          - mysql 
+        environment:
+          PMA_HOST: mysql 
+        networks:
+          - appnet          
 
-phpmyadmin:
-  image: phpmyadmin/phpmyadmin:4.7
-  # image: phpmyadmin/phpmyadmin
-  ports: 
-    - 8090:80
-  links:
-    - mysql 
-  environment:
-    PMA_HOST: mysql 
+networks:
+  appnet:
+    # Use a custom driver
+   # driver: custom-driver-1
