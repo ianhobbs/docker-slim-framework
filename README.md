@@ -15,12 +15,24 @@ This repository was prepared with the information in the following links:
 ## INSTRUCTIONS:
 1. Install Docker:
    - Windows 8/10: https://www.docker.com/community-edition
-   - Ubuntu 16.04:
+   - Ubuntu 16.04: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#os-requirements
    ```
-     - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-     - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
      - sudo apt-get update
-     - sudo apt-get install -y docker-ce
+     - sudo apt-get install \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        software-properties-common
+     - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+     - sudo apt-key fingerprint 0EBFCD88
+     
+     For x86_64 / amd64: 
+     - sudo add-apt-repository \
+       "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+       $(lsb_release -cs) \
+       stable"
+     - sudo apt-get update
+     - sudo apt-get install docker-ce
      - docker --version
    ```  
 2. Clone this public repository:
@@ -41,6 +53,14 @@ This repository was prepared with the information in the following links:
 7. Search for that ip:8085 in your browser (At this point the Slim Project should be running :sunglasses:)
 
 8. Search for the ip:8090 for phpMyadmin (credentials in **docker-compose.yml**)
+
+## File Permissions:
+1. If you are using docker over Windows -> You'll not have any error
+2. If you are using docker over linux -> It's probably that on STEP 7 you get an error (PERMISSON ERROR)
+   To fix the permission's issues, follow instructions of:
+   [Docker & File Permissions](https://serversforhackers.com/c/dckr-file-permissions)
+   
+   NOTE: For the "PHP container", if you get an error trying to go inside the container using "bash", then, try with "/bin/bash" or "sh"
 
 ## Docker usefull commands:
 If you are using Ubuntu 16.04, you need to add `sudo` at the begining of all the **docker** commands:
