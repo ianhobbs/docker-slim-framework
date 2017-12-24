@@ -52,16 +52,18 @@ This repository was prepared with the information in the following links:
 
 7. Search for that ip:8085 in your browser (At this point the Slim Project should be running :sunglasses:)
 
+    NOTE: If you got an error go below to FILE PERMISSIONS (over Ubuntu)
+
 8. Search for the ip:8090 for phpMyadmin (credentials in **docker-compose.yml**)
 
 ## File Permissions:
-1. If you are using docker over Windows -> You'll not have any error
-2. If you are using docker over linux -> It's probably that on STEP 7 you get an error (PERMISSON ERROR)
-   To fix the permission's issues, follow instructions of:
-   [Docker & File Permissions](https://serversforhackers.com/c/dckr-file-permissions)
+1. If you are using docker over Windows -> You'll not have any error (from step 1 through 8)
+2. If you are using docker over linux -> It's probably that on STEP 7 you got an error (PERMISSION ERROR)
+   a. DEVELOPMENT: In order to test go at the level of **myappname** and execute: sudo chmod -R 777 (***Warning*** :exclamation: :Security issues)
+   b. PRODUCTION: To fix the permission's issues, follow instructions of: [Docker & File Permissions](https://serversforhackers.com/c/dckr-file-permissions)   
+   NOTE 1: For the "PHP container", if you get an error trying to go inside the container using "bash", then, try with "/bin/bash" or "sh"
+   NOTE 2: If don't want to review the Video, you can try the following: Go at the level of **myappname** and execute: sudo chown -R 82:docker myappname/ (If this do nt work, then try the video)
    
-   NOTE: For the "PHP container", if you get an error trying to go inside the container using "bash", then, try with "/bin/bash" or "sh"
-
 ## Docker usefull commands:
 If you are using Ubuntu 16.04, you need to add `sudo` at the begining of all the **docker** commands:
 
