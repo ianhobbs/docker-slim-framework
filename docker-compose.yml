@@ -27,12 +27,13 @@ services:
         image: mysql:5.7.20
         restart: always
         environment:
+        # Change the passwords below
             # user= root / password= secret
-            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_ROOT_PASSWORD: SecretPassword@1980
             MYSQL_DATABASE: project
             # user= project / password = project
             MYSQL_USER: project
-            MYSQL_PASSWORD: project
+            MYSQL_PASSWORD: SecretPassword@1980
         networks:
           - appnet            
 
