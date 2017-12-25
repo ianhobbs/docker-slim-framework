@@ -21,6 +21,11 @@ This repository was prepared with the information in the following links:
    `git clone git://github.com/pablodonayre/docker-slim-framework.git`
 
 3. Go inside **myappname** and execute (to download vendor directory): `composer install`
+   - Error: "mbstring not found". To Fix try: `sudo apt-get install php7.0-mbstring`
+   ![mbstring](https://user-images.githubusercontent.com/17578664/34341464-dc0f2668-e976-11e7-9516-40057a267569.jpg)
+   
+   - Error: "dom not found". to fix try: `sudo apt-get install php7.0-xml` and then `sudo apt-get install zip unzip php7.0-zip`
+   ![dom](https://user-images.githubusercontent.com/17578664/34341576-e40af570-e978-11e7-8799-9b60a7dc9eac.jpg)
 
 4. Execute the following commands (Get out of **myappname** / Need to be at the level of **docker-compose.yml**):
 
