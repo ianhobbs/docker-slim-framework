@@ -17,17 +17,13 @@ This repository was prepared with the information in the following links:
    - Windows 8/10: https://www.docker.com/community-edition
    - Ubuntu 16.04 (64 bits): https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#os-requirements
    
+   Install Docker Compose:
+   - Ubuntu 16.04 (64 bits): https://docs.docker.com/compose/install/
+   
 2. Clone this public repository:
    `git clone git://github.com/pablodonayre/docker-slim-framework.git`
 
 3. Go inside **myappname** and execute (to download vendor directory): `composer install`
-   - Error: "mbstring not found". To Fix try: `sudo apt-get install php7.0-mbstring`
-   
-   ![mbstring](https://user-images.githubusercontent.com/17578664/34341464-dc0f2668-e976-11e7-9516-40057a267569.jpg)
-   
-   - Error: "dom not found". to fix try: `sudo apt-get install php7.0-xml` and then `sudo apt-get install zip unzip php7.0-zip`
-   
-   ![dom](https://user-images.githubusercontent.com/17578664/34341576-e40af570-e978-11e7-8799-9b60a7dc9eac.jpg)
 
 4. Execute the following commands (Get out of **myappname** / Need to be at the level of **docker-compose.yml**):
 
@@ -53,6 +49,17 @@ This repository was prepared with the information in the following links:
         - NOTE 1: For the "PHP container", if you get an error trying to go inside the container using "bash", then, try with "/bin/bash" or "sh"
         - :key: NOTE 2: If don't want to review the Video, you can try the following: Go at the level of **myappname** and execute: `sudo chown -R 82:docker myappname/` (If this do not work, then try the video)
    
+## Composer Installation:
+`sudo at-get install composer`
+
+   - Error: "mbstring not found". To Fix try: `sudo apt-get install php7.0-mbstring`
+   
+   ![mbstring](https://user-images.githubusercontent.com/17578664/34341464-dc0f2668-e976-11e7-9516-40057a267569.jpg)
+   
+   - Error: "dom not found". to fix try: `sudo apt-get install php7.0-xml` and then `sudo apt-get install zip unzip php7.0-zip`
+   
+   ![dom](https://user-images.githubusercontent.com/17578664/34341576-e40af570-e978-11e7-8799-9b60a7dc9eac.jpg)
+
 ## Docker usefull commands:
 If you are using Ubuntu 16.04, you need to add `sudo` at the begining of all the **docker** commands:
 
