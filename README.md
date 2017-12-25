@@ -15,7 +15,7 @@ This repository was prepared with the information in the following links:
 ## INSTRUCTIONS:
 1. Install Docker:
    - Windows 8/10: https://www.docker.com/community-edition
-   - Ubuntu 16.04: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#os-requirements
+   - Ubuntu 16.04 (64 bits): https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#os-requirements
    
 2. Clone this public repository:
    `git clone git://github.com/pablodonayre/docker-slim-framework.git`
