@@ -1,7 +1,8 @@
-version: '2'
+version: '3'
 services:
     nginx:
         build: ./config_nginx
+        container_name: ${project}_nginx
         restart: always
         ports:
             # Ports: <HOST:CONTAINER>
@@ -9,46 +10,67 @@ services:
             - 8085:80
         volumes: 
             - ./myappname:/var/www/html/app
+        depends_on:
+          - php             
         networks:
-          - appnet
+          - skynet
 
     php:
         build: ./config_php
+        container_name: ${project}_php
         restart: always
         expose:
             - 9000
-
         volumes: 
           - ./myappname:/var/www/html/app
         networks:
-          - appnet          
+          - skynet          
 
     mysql:
         image: mysql:5.7.20
+        container_name: ${project}_database
         restart: always
         environment:
-        # Change the passwords below
-            # user= root / password= secret
+            # Change the passwords below
+            # root
             MYSQL_ROOT_PASSWORD: SecretPassword@1980
+            
+            # Create New Database
             MYSQL_DATABASE: project
-            # user= project / password = project
+            MYSQL_USER: project
+            
+            # Create new user
             MYSQL_USER: project
             MYSQL_PASSWORD: SecretPassword@1980
+        volumes:           
+          # Store database data into a Volume
+          - mysql_data:/var/lib/mysql          
+          # Load the schema.sql
+          - ./config_mysql:/docker-entrypoint-initdb.d 
         networks:
-          - appnet            
+          - skynet            
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:4.7
         # image: phpmyadmin/phpmyadmin
+        container_name: ${project}_phpmyadmin
         ports: 
           - 8090:80
-        links:
-          - mysql 
+        #links:
+        #  - mysql 
         environment:
           PMA_HOST: mysql 
+        depends_on:
+          - mysql          
         networks:
-          - appnet          
+          - skynet          
 
 networks:
-  appnet:
+  #proxy:
+  #  external: true
+  skynet:
+    external: false
     driver: "bridge"
+    
+volumes:
+  mysql_data:    
