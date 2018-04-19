@@ -1,3 +1,8 @@
+# IMPORTANT NOTES:
+# If you will execute this compose file more than one time, you need
+# to do some changes: ports, project name (in env file) and mysql volume name
+# Also, you need to wait acouple of minutes before login to phpmyadmin. If not
+# you will acquire an error #2002 - Connection refused &mdash; El servidor no está respondiendo (o el zócalo local al servidor MySQL no está configurado correctamente).
 version: '3'
 services:
     nginx:
@@ -32,19 +37,17 @@ services:
         restart: always
         environment:
             # Change the passwords below
-            # root
+            # root (This user will be able to view database restored from schema.sql / all databases)
             MYSQL_ROOT_PASSWORD: SecretPassword@1980
             
+            # Create new user (This user only has access to the new database)
+            MYSQL_USER: project
+            MYSQL_PASSWORD: project
             # Create New Database
             MYSQL_DATABASE: project
-            MYSQL_USER: project
-            
-            # Create new user
-            MYSQL_USER: project
-            MYSQL_PASSWORD: SecretPassword@1980
         volumes:           
           # Store database data into a Volume
-          - mysql_data:/var/lib/mysql          
+          - mysql_slim:/var/lib/mysql          
           # Load the schema.sql
           - ./config_mysql:/docker-entrypoint-initdb.d 
         networks:
@@ -73,4 +76,4 @@ networks:
     driver: "bridge"
     
 volumes:
-  mysql_data:    
+  mysql_slim:    
