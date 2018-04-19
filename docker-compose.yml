@@ -49,7 +49,10 @@ services:
           # Store database data into a Volume
           - mysql_slim:/var/lib/mysql          
           # Load the schema.sql
-          - ./config_mysql:/docker-entrypoint-initdb.d 
+          - ./config_mysql:/docker-entrypoint-initdb.d
+        # Expose port. Only required to use Workbench or HeidiSQL
+        #ports: 
+        #  - 3306:3306 
         networks:
           - skynet            
 
