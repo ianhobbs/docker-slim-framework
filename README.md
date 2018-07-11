@@ -13,36 +13,38 @@ This repository was prepared with the information in the following links:
     If not, you will get error [oci runtime error](https://github.com/moby/moby/issues/26855)
 
 ## INSTRUCTIONS:
-1. Install Docker:
-   - Windows 8/10: https://www.docker.com/community-edition
-   - Ubuntu 16.04 (64 bits): https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#os-requirements
-   
-   Install Docker Compose:
-   - Ubuntu 16.04 (64 bits): https://docs.docker.com/compose/install/
-   
-2. Clone this public repository:
+  
+1. Clone this public repository:
    `git clone git://github.com/pablodonayre/docker-slim-framework.git`
 
-3. Go inside **myappname** and execute (to download vendor directory): `composer install`
+2. Go inside **myappname** and execute (to download vendor directory): `composer install`
 
     NOTE: If you got an error go below to Composer Installation (over Ubuntu)
 
-4. Execute the following commands (Get out of **myappname** / Need to be at the level of **docker-compose.yml**):
+3. Execute the following commands (Get out of **myappname** / Need to be at the level of **docker-compose.yml**):
 
    -To know the ip of the machine: `docker-machine ip`
 
    -To execute the docker-compose file: `docker-compose up -d`
 
-5. At this point, the containers should be running, check them with: `docker ps -a` 
+4. At this point, the containers should be running, check them with: `docker ps -a` 
 
-6. To know the ip of the machine (For Windows): `docker-machine ip`
+5. To know the ip of the machine (For Windows): `docker-machine ip`
 
-7. Search for that ip:8085 in your browser (At this point the Slim Project should be running :sunglasses:)
+6. Search for that ip:8085 in your browser (At this point the Slim Project should be running :sunglasses:)
 
     NOTE: If you got an error go below to FILE PERMISSIONS (over Ubuntu)
 
-8. Search for the ip:8090 for phpMyadmin (credentials in **docker-compose.yml**)
+7. Search for the ip:8090 for phpMyadmin (credentials in **docker-compose.yml**)
 
+## Pre Requisites:
+1. Install Docker:
+   - Windows 8/10: https://www.docker.com/community-edition
+   - Ubuntu 16.04 (64 bits): https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#os-requirements
+   
+2. Install Docker Compose:
+   - Ubuntu 16.04 (64 bits): https://docs.docker.com/compose/install/
+   
 ## File Permissions:
 1. If you are using docker over Windows -> You'll not have any error (from step 1 through 8)
 2. If you are using docker over linux -> It's probably that on STEP 7 you got an error (PERMISSION ERROR)
